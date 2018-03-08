@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1042233236170",
+    "firebase_url": "https://watchbro1.firebaseio.com",
+    "project_id": "watchbro1",
+    "storage_bucket": "watchbro1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042233236170:android:b28e431b73dc4c98",
+        "android_client_info": {
+          "package_name": "com.watchbro.watchbro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042233236170-1vbae8j0tsi26l2nc11ud8kd8a614rjt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.watchbro.watchbro",
+            "certificate_hash": "3e2869c5e279dba81e3a7246a19ef18455a8195e"
+          }
+        },
+        {
+          "client_id": "1042233236170-bfoc3fs6f2vncjruqvcjefmkrlp3igrh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAas6xW4NUB_GQgPgoMa0DkGoaue-NM1bI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042233236170-bfoc3fs6f2vncjruqvcjefmkrlp3igrh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
