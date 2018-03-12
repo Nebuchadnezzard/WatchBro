@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
 
     GoogleApiClient clientGoogle;
     SignInButton signInGoogle;
+    private static int RC_SIGN_IN = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
