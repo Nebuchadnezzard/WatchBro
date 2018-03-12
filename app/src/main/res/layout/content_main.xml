@@ -9,7 +9,7 @@
     tools:showIn="@layout/app_bar_main">
 
     <com.google.android.gms.common.SignInButton
-        android:id="@+id/bontonConnect"
+        android:id="@+id/boutonConnect"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
