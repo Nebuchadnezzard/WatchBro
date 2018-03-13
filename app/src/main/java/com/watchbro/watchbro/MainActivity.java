@@ -3,6 +3,9 @@ package com.watchbro.watchbro;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -50,18 +53,18 @@ public class MainActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_main);
 
-        // Définie la toolbar dans l'activité
+        // Définie la toolbar en tant qu'action bar dans l'activité
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Ajoute le layout du toolbar drawer à l'activité
+        // Ajoute le bouton du drawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // Affiche la vue du menu
+        // L'activité est le listener du menu
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -125,7 +128,6 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -139,23 +141,39 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        switch (id) {
+            case R.id.action_settings :
+                // TODO intent activité parametres
+                break;
+            case R.id.nav_activity :
+                showFragment(new ActivityFragment());
+                break;
+            case R.id.nav_course :
+                // TODO charger fragment
+                break;
+            case R.id.nav_connect :
+                // TODO charger fragment
+                break;
+            default:
+                return false;
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * Remplace le fragment actuel par un autre
+     * @param fragment L'autre fragment
+     */
+    private void showFragment(Fragment fragment) {
+        FragmentManager fragManager = getSupportFragmentManager();
+        fragManager.beginTransaction()
+                .replace(R.id.content_main, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+
     }
 
     @Override
