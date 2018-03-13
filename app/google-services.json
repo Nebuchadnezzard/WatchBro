@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1042233236170-u5htfjopkcoj5lkhe4bhqor5vn70tqrb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.watchbro.watchbro",
+            "certificate_hash": "a562200b52a651af6fc9be97a4826e174b3b7574"
+          }
+        },
+        {
           "client_id": "1042233236170-1vbae8j0tsi26l2nc11ud8kd8a614rjt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

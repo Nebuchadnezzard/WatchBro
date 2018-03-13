@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WatchBro</string>
+
+    <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>
+    <string name="navigation_drawer_close">Fermer le menu de navigation</string>
+
+    <string name="action_settings">Paramètres</string>
+    <string name="tokenDefaultFirebase">1042233236170-bfoc3fs6f2vncjruqvcjefmkrlp3igrh.apps.googleusercontent.com</string>
+    <string name="toastDeco">Déconnecté</string>
+    <string name="toastCoHello">Bonjour</string>
+    <string name="toastFailCo">Echec de connexion</string>
+    <string name="decoButton">Déconnexion</string>
+</resources>
