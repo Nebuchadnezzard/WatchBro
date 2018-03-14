@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/WatchBro.iml" filepath="$PROJECT_DIR$/WatchBro.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/watchbro.iml" filepath="$PROJECT_DIR$/watchbro.iml" />
     </modules>
   </component>
 </project>

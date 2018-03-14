@@ -1,4 +1,4 @@
-package com.watchbro.watchbro;
+package com.watchbro.watchbro.activities.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +28,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
+import com.watchbro.watchbro.R;
 
 
 public class HomeFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{

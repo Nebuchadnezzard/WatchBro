@@ -1,4 +1,4 @@
-package com.watchbro.watchbro;
+package com.watchbro.watchbro.activities.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,16 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.watchbro.watchbro.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CourseFragment.OnFragmentInteractionListener} interface
+ * {@link ConnectFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CourseFragment#newInstance} factory method to
+ * Use the {@link ConnectFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CourseFragment extends Fragment {
+public class ConnectFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +31,7 @@ public class CourseFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public CourseFragment() {
+    public ConnectFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +41,11 @@ public class CourseFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CourseFragment.
+     * @return A new instance of fragment connectFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CourseFragment newInstance(String param1, String param2) {
-        CourseFragment fragment = new CourseFragment();
+    public static ConnectFragment newInstance(String param1, String param2) {
+        ConnectFragment fragment = new ConnectFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +66,7 @@ public class CourseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course, container, false);
+        return inflater.inflate(R.layout.fragment_connect, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
