@@ -42,14 +42,6 @@ public class MainActivity extends AppCompatActivity
         CourseFragment.OnFragmentInteractionListener,
         ConnectFragment.OnFragmentInteractionListener {
 
-    private GoogleSignInClient signInClient;
-    private FirebaseAuth firebaseAuth;
-    private SignInButton signInB;
-    private Button signOutB;
-
-    private static int RC_SIGN_IN = 9001;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,43 +63,8 @@ public class MainActivity extends AppCompatActivity
         // L'activité est le listener du menu
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        /*
-        // Initialise firebase auth
-        firebaseAuth = FirebaseAuth.getInstance();
 
-        // Options de connexion au compte google
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.tokenDefaultFirebase))
-                .requestEmail()
-                .build();
-
-        signInClient = GoogleSignIn.getClient(this, gso);
-
-        signInB = findViewById(R.id.boutonConnect);
-        signInB.setOnClickListener(this);
-        signOutB = findViewById(R.id.boutonDeconnect);
-        signOutB.setOnClickListener(this);
-        */
     }
-    /*
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // Vérifie si l'utilisateur est déjà connecté
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-
-        // Change l'affichage des bouton signIn et signOut
-        if(currentUser != null) {
-            signInB.setVisibility(View.GONE);
-            signOutB.setVisibility(View.VISIBLE);
-        }
-        else {
-            signInB.setVisibility(View.VISIBLE);
-            signOutB.setVisibility(View.GONE);
-        }
-    }
-    */
 
     @Override
     public void onBackPressed() {
@@ -185,94 +142,6 @@ public class MainActivity extends AppCompatActivity
                 .commit();
 
     }
-
-    /*
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.e("Firebase", "Failed to connect");
-    }
-
-    //resultat de l'envoi de l'intent signin google
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // réussite google signin
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                Log.e("Firebase", "fail");
-                Toast toastEchec = Toast.makeText(getApplicationContext(), R.string.toastFailCo, Toast.LENGTH_SHORT);
-                toastEchec.show();
-
-                signInB.setVisibility(View.VISIBLE);
-                signOutB.setVisibility(View.GONE);
-            }
-        }
-    }
-
-    // Authentification Firebase avec compte google
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d("Activité ident", "firebaseAuthWithGoogle:" + acct.getId());
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("Activité ident", "signInWithCredential:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Toast.makeText(getApplicationContext(), getString(R.string.toastCoHello) + " " + user.getDisplayName(), Toast.LENGTH_LONG).show();
-                        } else {
-                            // En cas d'erreur de connexion, affiche un message à l'utilisateur
-                            Toast toastEchec = Toast.makeText(getApplicationContext(), R.string.toastFailCo, Toast.LENGTH_SHORT);
-                            toastEchec.show();
-                            signInB.setVisibility(View.VISIBLE);
-                            signOutB.setVisibility(View.GONE);
-                        }
-                    }
-                });
-    }
-
-    public void signIn() {
-        Intent intentSignInGoogle = signInClient.getSignInIntent();
-        startActivityForResult(intentSignInGoogle, RC_SIGN_IN);
-
-        signInB.setVisibility(View.GONE);
-        signOutB.setVisibility(View.VISIBLE);
-    }
-
-    public void signOut() {
-
-        // Déconnexion de firebase
-        firebaseAuth.signOut();
-
-        // Déconnexion du compte google
-        signInClient.signOut();
-
-        Toast.makeText(getApplicationContext(), R.string.toastDeco, Toast.LENGTH_LONG).show();
-
-        signInB.setVisibility(View.VISIBLE);
-        signOutB.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.boutonConnect :
-                signIn();
-                break;
-            case R.id.boutonDeconnect :
-                signOut();
-                break;
-        }
-    }
-    */
 
     @Override
     public void onFragmentInteraction(Uri uri) {

@@ -157,7 +157,7 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        
+
         signInB = (SignInButton) view.findViewById(R.id.boutonConnect);
         signInB.setOnClickListener(this);
         signOutB = view.findViewById(R.id.boutonDeconnect);
