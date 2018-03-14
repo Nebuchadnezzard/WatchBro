@@ -14,4 +14,5 @@
     <string name="menu_activity">Activité</string>
     <string name="menu_connect">Connecter</string>
     <string name="menu_home">Accueil</string>
+    <string name="textViewConnect">Connectez vous pour enregistrer vos données sur votre compte</string>
 </resources>

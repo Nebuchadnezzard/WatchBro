@@ -68,16 +68,18 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
 
         // Change l'affichage des bouton signIn et signOut
         if(currentUser != null) {
+            Log.e("Connectivity", "Already connected");
             signInB.setVisibility(View.GONE);
             signOutB.setVisibility(View.VISIBLE);
         }
         else {
+            Log.e("Connectivity", "Not connected");
             signInB.setVisibility(View.VISIBLE);
             signOutB.setVisibility(View.GONE);
         }
     }
 
-    //resultat de l'envoi de l'intent signin google
+    // Resultat de l'envoi de l'intent signin google
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -114,6 +116,8 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
                             Log.d("Activité ident", "signInWithCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastCoHello) + " " + user.getDisplayName(), Toast.LENGTH_LONG).show();
+                            signInB.setVisibility(View.GONE);
+                            signOutB.setVisibility(View.VISIBLE);
                         } else {
                             // En cas d'erreur de connexion, affiche un message à l'utilisateur
                             Toast toastEchec = Toast.makeText(getActivity().getApplicationContext(), R.string.toastFailCo, Toast.LENGTH_SHORT);
@@ -128,9 +132,6 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
     public void signIn() {
         Intent intentSignInGoogle = signInClient.getSignInIntent();
         startActivityForResult(intentSignInGoogle, RC_SIGN_IN);
-
-        signInB.setVisibility(View.GONE);
-        signOutB.setVisibility(View.VISIBLE);
     }
 
     public void signOut() {
@@ -158,7 +159,7 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        signInB = (SignInButton) view.findViewById(R.id.boutonConnect);
+        signInB = view.findViewById(R.id.boutonConnect);
         signInB.setOnClickListener(this);
         signOutB = view.findViewById(R.id.boutonDeconnect);
         signOutB.setOnClickListener(this);
