@@ -143,43 +143,27 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragmentToBeLaunched;
-        Class classeFragment;
 
         switch (id) {/*
             case R.id.action_settings :
                 // TODO intent activité parametres
                 break;*/
             case R.id.nav_home :
-                classeFragment = HomeFragment.class;
-                //showFragment(new HomeFragment());
+                showFragment(new HomeFragment());
                 break;
             case R.id.nav_activity :
-                classeFragment = ActivityFragment.class;
-                //showFragment(new ActivityFragment());
+                showFragment(new ActivityFragment());
                 break;
             case R.id.nav_course :
-                classeFragment = CourseFragment.class;
-                //showFragment(new CourseFragment());
+                showFragment(new CourseFragment());
                 break;
             case R.id.nav_connect :
-                classeFragment = ConnectFragment.class;
-                //showFragment(new ConnectFragment());
+                showFragment(new ConnectFragment());
                 break;
             default:
-                classeFragment = HomeFragment.class;
+                showFragment(new HomeFragment());
                 break;
         }
-        try {
-            fragmentToBeLaunched = (Fragment) classeFragment.newInstance();
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.flContent, fragmentToBeLaunched).commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
