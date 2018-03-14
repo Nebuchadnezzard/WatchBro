@@ -37,7 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, ActivityFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ActivityFragment.OnFragmentInteractionListener {
 
     private GoogleSignInClient signInClient;
     private FirebaseAuth firebaseAuth;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
         // L'activité est le listener du menu
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        /*
         // Initialise firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -84,8 +84,9 @@ public class MainActivity extends AppCompatActivity
         signInB.setOnClickListener(this);
         signOutB = findViewById(R.id.boutonDeconnect);
         signOutB.setOnClickListener(this);
+        */
     }
-
+    /*
     @Override
     protected void onStart() {
         super.onStart();
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity
             signOutB.setVisibility(View.GONE);
         }
     }
+    */
 
     @Override
     public void onBackPressed() {
@@ -141,25 +143,43 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragmentToBeLaunched;
+        Class classeFragment;
 
-        switch (id) {
+        switch (id) {/*
             case R.id.action_settings :
                 // TODO intent activité parametres
-                break;
+                break;*/
             case R.id.nav_home :
-                showFragment(new HomeFragment());
+                classeFragment = HomeFragment.class;
+                //showFragment(new HomeFragment());
+                break;
             case R.id.nav_activity :
-                showFragment(new ActivityFragment());
+                classeFragment = ActivityFragment.class;
+                //showFragment(new ActivityFragment());
                 break;
             case R.id.nav_course :
-                showFragment(new CourseFragment());
+                classeFragment = CourseFragment.class;
+                //showFragment(new CourseFragment());
                 break;
             case R.id.nav_connect :
-                showFragment(new ConnectFragment());
+                classeFragment = ConnectFragment.class;
+                //showFragment(new ConnectFragment());
                 break;
             default:
-                return false;
+                classeFragment = HomeFragment.class;
+                break;
         }
+        try {
+            fragmentToBeLaunched = (Fragment) classeFragment.newInstance();
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragmentToBeLaunched).commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -179,6 +199,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /*
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.e("Firebase", "Failed to connect");
@@ -264,6 +285,7 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
     }
+    */
 
     @Override
     public void onFragmentInteraction(Uri uri) {
