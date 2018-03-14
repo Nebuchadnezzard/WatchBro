@@ -37,7 +37,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ActivityFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        ActivityFragment.OnFragmentInteractionListener,
+        CourseFragment.OnFragmentInteractionListener,
+        ConnectFragment.OnFragmentInteractionListener {
 
     private GoogleSignInClient signInClient;
     private FirebaseAuth firebaseAuth;
