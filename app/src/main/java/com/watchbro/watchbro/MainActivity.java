@@ -1,6 +1,7 @@
 package com.watchbro.watchbro;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -36,7 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener, ActivityFragment.OnFragmentInteractionListener {
 
     private GoogleSignInClient signInClient;
     private FirebaseAuth firebaseAuth;
@@ -145,14 +146,16 @@ public class MainActivity extends AppCompatActivity
             case R.id.action_settings :
                 // TODO intent activité parametres
                 break;
+            case R.id.nav_home :
+                showFragment(new HomeFragment());
             case R.id.nav_activity :
                 showFragment(new ActivityFragment());
                 break;
             case R.id.nav_course :
-                // TODO charger fragment
+                showFragment(new CourseFragment());
                 break;
             case R.id.nav_connect :
-                // TODO charger fragment
+                showFragment(new ConnectFragment());
                 break;
             default:
                 return false;
@@ -260,5 +263,10 @@ public class MainActivity extends AppCompatActivity
                 signOut();
                 break;
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
