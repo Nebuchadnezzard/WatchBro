@@ -1,4 +1,4 @@
-package DataBase;
+package com.watchbro.watchbro.DataBase;
 //package com.androidhive.androidsqlite;
 
 /**
@@ -6,20 +6,23 @@ package DataBase;
  */
 
 public class Utilisateur {
-    //variables privées
 
-    int _idUtil;
-    String _nomUtil;
+    private int _idUtil;
+    private String _nomUtil;
 
     // constructeur vide
-    public Utilisateur(int i, String string, String cursorString){
-
+    public Utilisateur(){
     }
 
 
     // constructeur
     public Utilisateur(int _idUtil, String _nomUtil){
         this._idUtil=_idUtil;
+        this._nomUtil = _nomUtil;
+    }
+
+    // constructeur
+    public Utilisateur(String _nomUtil){
         this._nomUtil = _nomUtil;
     }
 
