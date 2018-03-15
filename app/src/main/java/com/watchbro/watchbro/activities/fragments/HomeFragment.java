@@ -98,12 +98,9 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-<<<<<<< HEAD
                 Log.e("Firebase", "fail");
                 Log.e("Firebase", String.valueOf(e.getStatusCode()));
-=======
                 Log.e("Sign in google", e.getMessage());
->>>>>>> 79473d6ec96920d5456435210173c20c6a5fe9bd
                 Toast toastEchec = Toast.makeText(getActivity().getApplicationContext(), R.string.toastFailCo, Toast.LENGTH_SHORT);
                 toastEchec.show();
 

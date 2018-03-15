@@ -2,12 +2,17 @@ package com.watchbro.watchbro.activities.fragments;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.watchbro.watchbro.R;
 import com.github.mikephil.charting.charts.BarChart;
@@ -25,13 +30,17 @@ import java.util.List;
 /**
  * Fragment de l'activité de l'utilisateur
  */
-public class ActivityFragment extends Fragment {
+public class ActivityFragment extends Fragment implements SensorEventListener {
 
     private BarChart bchart;
     private List<Integer> yData;
     private List<Integer> xData;
     private final String[] days = {"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
     private IAxisValueFormatter formatterDays;
+
+    private SensorManager mSensorManager;
+    private Sensor mSensor;
+    private TextView mStepsSinceReboot;
 
     public ActivityFragment() {
         // Required empty public constructor
@@ -101,6 +110,26 @@ public class ActivityFragment extends Fragment {
         bchart.setData(lData);
         bchart.notifyDataSetChanged();
         bchart.invalidate(); // refresh
+
+        mStepsSinceReboot =  view.findViewById(R.id.textSteps);
+
+        mSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
+        if(mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null)
+        {
+            mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        }
+
         return view;
+    }
+
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        mStepsSinceReboot.setText(String.valueOf(sensorEvent.values[0]));
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
     }
 }
