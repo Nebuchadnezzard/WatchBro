@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
         // Options de connexion au compte google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.tokenDefaultFirebase))
+                //.requestIdToken("1042233236170-pve0pepj85ku9tk6avnnv272oalg25bd.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
@@ -97,8 +98,12 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
+<<<<<<< HEAD
                 Log.e("Firebase", "fail");
                 Log.e("Firebase", String.valueOf(e.getStatusCode()));
+=======
+                Log.e("Sign in google", e.getMessage());
+>>>>>>> 79473d6ec96920d5456435210173c20c6a5fe9bd
                 Toast toastEchec = Toast.makeText(getActivity().getApplicationContext(), R.string.toastFailCo, Toast.LENGTH_SHORT);
                 toastEchec.show();
 
@@ -138,13 +143,13 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
     }
 
     private void testSendValues() {
-        Day j1 = new Day(3000, 80, 1);
-        Day j2 = new Day(2700, 78,2);
+        Day j1 = new Day(13, 120, 1);
+        Day j2 = new Day(27, 138,2);
         ArrayList<Day> jours = new ArrayList<Day>();
         jours.add(j1);
         jours.add(j2);
 
-        nouveauUser("pcoud1", "Pierre", jours);
+        nouveauUser("jcoud1", "Jacques", jours);
 
     }
 
