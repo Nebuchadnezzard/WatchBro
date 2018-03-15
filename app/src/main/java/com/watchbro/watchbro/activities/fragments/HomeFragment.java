@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 Log.e("Firebase", "fail");
+                Log.e("Firebase", String.valueOf(e.getStatusCode()));
                 Toast toastEchec = Toast.makeText(getActivity().getApplicationContext(), R.string.toastFailCo, Toast.LENGTH_SHORT);
                 toastEchec.show();
 
