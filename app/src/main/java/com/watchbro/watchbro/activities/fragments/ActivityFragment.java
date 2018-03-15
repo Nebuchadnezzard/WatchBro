@@ -1,6 +1,7 @@
 package com.watchbro.watchbro.activities.fragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,25 +10,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.watchbro.watchbro.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ActivityFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * Fragment de l'activité de l'utilisateur
  */
 public class ActivityFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    private BarChart bchart;
+    private List<Integer> yData;
+    private List<Integer> xData;
+    private final String[] days = {"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
+    private IAxisValueFormatter formatterDays;
 
     public ActivityFragment() {
         // Required empty public constructor
@@ -36,55 +40,67 @@ public class ActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_activity, container, false);
-    }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        View view = inflater.inflate(R.layout.fragment_activity, container, false);
+        bchart = (BarChart) view.findViewById(R.id.bchart);
+
+        formatterDays = new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return days[(int) value];
+            }
+        };
+
+        xData = new ArrayList<>();
+        yData = new ArrayList<>();
+        yData.add(0);
+        yData.add(1);
+        yData.add(2);
+        yData.add(3);
+        yData.add(4);
+        yData.add(5);
+        yData.add(6);
+        yData.add(7);
+        yData.add(8);
+        yData.add(9);
+        yData.add(10);
+        xData.add(900);
+        xData.add(750);
+        xData.add(11590);
+        xData.add(15000);
+        xData.add(14520);
+        xData.add(12069);
+        xData.add(13679);
+        xData.add(867);
+        xData.add(7620);
+        xData.add(11687);
+        xData.add(15632);
+
+
+        List<BarEntry> entries = new ArrayList<BarEntry>();
+        for (int i = 0; i < yData.size(); i++) {
+            entries.add(new BarEntry((float) yData.get(i), (float) xData.get(i)));
         }
-    }
+        BarDataSet dataS = new BarDataSet(entries, "Votre nombre de pas par jour");
+        BarData lData = new BarData(dataS);
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        // Limite
+        LimitLine ll = new LimitLine(10000f, "Nombre de pas idéal");
+        ll.setLineColor(Color.GREEN);
+        ll.setLineWidth(2f);
+        ll.setTextColor(Color.GREEN);
+        ll.setTextSize(12f);
+        bchart.getAxisLeft().addLimitLine(ll);
+        bchart.setData(lData);
+        bchart.notifyDataSetChanged();
+        bchart.invalidate(); // refresh
+        return view;
     }
 }

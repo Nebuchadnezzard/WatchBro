@@ -28,7 +28,6 @@ import com.watchbro.watchbro.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ActivityFragment.OnFragmentInteractionListener,
         CourseFragment.OnFragmentInteractionListener,
         ConnectFragment.OnFragmentInteractionListener {
 
