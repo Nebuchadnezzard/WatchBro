@@ -5,6 +5,7 @@ package com.watchbro.watchbro.userClasses;
  */
 
 public class Day {
+    public int numJour;
     public int nbPas;
     public int nbBPMMoyen;
 
@@ -12,8 +13,9 @@ public class Day {
 
     }
 
-    public Day(int nbPas, int nbBPMMoyen) {
+    public Day(int nbPas, int nbBPMMoyen, int numJour) {
         this.nbPas = nbPas;
         this.nbBPMMoyen = nbBPMMoyen;
+        this.numJour = numJour;
     }
 }

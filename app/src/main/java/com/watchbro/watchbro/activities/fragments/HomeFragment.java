@@ -28,7 +28,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
 import com.watchbro.watchbro.R;
+import com.watchbro.watchbro.userClasses.Day;
+import com.watchbro.watchbro.userClasses.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
@@ -118,6 +124,7 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
                             Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastCoHello) + " " + user.getDisplayName(), Toast.LENGTH_LONG).show();
                             signInB.setVisibility(View.GONE);
                             signOutB.setVisibility(View.VISIBLE);
+                            testSendValues();
                         } else {
                             // En cas d'erreur de connexion, affiche un message à l'utilisateur
                             Toast toastEchec = Toast.makeText(getActivity().getApplicationContext(), R.string.toastFailCo, Toast.LENGTH_SHORT);
@@ -127,6 +134,22 @@ public class HomeFragment extends Fragment implements GoogleApiClient.OnConnecti
                         }
                     }
                 });
+    }
+
+    private void testSendValues() {
+        Day j1 = new Day(3000, 80, 1);
+        Day j2 = new Day(2700, 78,2);
+        ArrayList<Day> jours = new ArrayList<Day>();
+        jours.add(j1);
+        jours.add(j2);
+
+        nouveauUser("pcoud1", "Pierre", jours);
+
+    }
+
+    private void nouveauUser(String idUser, String username, ArrayList<Day> jours) {
+        User user = new User(idUser, username, jours);
+        FirebaseDatabase.getInstance().getReference().child("users").child(idUser).setValue(user);
     }
 
     public void signIn() {
