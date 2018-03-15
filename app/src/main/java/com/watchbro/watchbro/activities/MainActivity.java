@@ -1,12 +1,16 @@
 package com.watchbro.watchbro.activities;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.watchbro.watchbro.activities.fragments.ActivityFragment;
 import com.watchbro.watchbro.activities.fragments.ConnectFragment;
@@ -27,6 +32,8 @@ public class MainActivity extends AppCompatActivity
         CourseFragment.OnFragmentInteractionListener,
         ConnectFragment.OnFragmentInteractionListener {
 
+
+    private static final int REQUEST_PERM = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            // Démarre l'activité settings
+            Intent intentSettings = new Intent(this, SettingsActivity.class);
+            startActivity(intentSettings);
             return true;
         }
 
@@ -92,10 +102,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_settings :
-                // Start the settings activity
-                Intent intentSettings = new Intent(this, SettingsActivity.class);
-                break;
             case R.id.nav_home :
                 showFragment(new HomeFragment());
                 break;
