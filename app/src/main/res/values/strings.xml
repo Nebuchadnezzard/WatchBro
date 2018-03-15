@@ -5,7 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="tokenDefaultFirebase">1042233236170-bfoc3fs6f2vncjruqvcjefmkrlp3igrh.apps.googleusercontent.com</string>
+    <string name="tokenDefaultFirebase">1042233236170-1vbae8j0tsi26l2nc11ud8kd8a614rjt.apps.googleusercontent.com</string>
     <string name="toastDeco">Disconnected</string>
     <string name="toastCoHello">Hello</string>
     <string name="toastFailCo">Failed to connect</string>
