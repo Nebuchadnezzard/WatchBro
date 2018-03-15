@@ -1,16 +1,12 @@
 package com.watchbro.watchbro.activities;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,20 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.watchbro.watchbro.R;
 import com.watchbro.watchbro.activities.fragments.ActivityFragment;
 import com.watchbro.watchbro.activities.fragments.ConnectFragment;
 import com.watchbro.watchbro.activities.fragments.CourseFragment;
 import com.watchbro.watchbro.activities.fragments.HomeFragment;
-import com.watchbro.watchbro.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ConnectFragment.OnFragmentInteractionListener {
 
-
-    private static final int REQUEST_PERM = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

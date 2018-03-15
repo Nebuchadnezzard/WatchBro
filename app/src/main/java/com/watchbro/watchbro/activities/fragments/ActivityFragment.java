@@ -117,6 +117,7 @@ public class ActivityFragment extends Fragment implements SensorEventListener {
         if(mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null)
         {
             mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
         return view;
